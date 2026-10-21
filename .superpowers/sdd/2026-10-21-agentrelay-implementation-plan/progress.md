@@ -1,0 +1,1 @@
+# SDD ledger — plan: docs/superpowers/plans/2026-10-21-agentrelay-implementation-plan.md`n`nRuling: remote clone unavailable — execute the approved repository-agnostic template locally without claiming remote changes — cost if wrong: local result must be manually transferred or pushed later.
