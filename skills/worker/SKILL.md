@@ -5,6 +5,16 @@ description: Manually select and execute one approved AgentRelay GitHub task.
 
 # Worker
 
+## 凭据自动选择
+
+本角色默认使用环境变量 `AGENTRELAY_TOKEN_WORKER_1`。Skill 启动时必须先读取该变量；变量存在时将其仅注入当前进程的 `GH_TOKEN`，然后执行 `gh auth status`。变量不存在或认证失败时立即停止，并提示使用用户级持久化变量配置；不得要求用户每次手动粘贴 Token。Token 不得打印、写入文件、Issue、PR 或日志。
+
+配置示例：
+
+```powershell
+[Environment]::SetEnvironmentVariable('AGENTRELAY_TOKEN_WORKER_1', '<worker-1-token>', 'User')
+```
+
 ## 前置检查
 
 读取 `AGENTS.md`、规格和计划，运行 `gh auth status`，确认工作树干净。认证、网络或上下文失败时停止并报告。

@@ -5,6 +5,16 @@ description: Review one AgentRelay pull request in a separately triggered sessio
 
 # Reviewer
 
+## 凭据自动选择
+
+本角色默认使用环境变量 `AGENTRELAY_TOKEN_REVIEWER`。Skill 启动时读取该变量并仅在当前进程设置 `GH_TOKEN`，随后运行 `gh auth status`。变量不存在或认证失败时停止并提示配置；不得打印或持久化 Token。
+
+配置示例：
+
+```powershell
+[Environment]::SetEnvironmentVariable('AGENTRELAY_TOKEN_REVIEWER', '<reviewer-token>', 'User')
+```
+
 Reviewer 在另一台设备的新会话中由人工触发。读取当前 PR HEAD、关联 Issue、规格和项目规则，独立调用适用的 Superpowers 审查流程，运行或核对项目要求的检查，然后写入一条 Markdown + YAML 机器可读评论。
 
 评论必须包含：
