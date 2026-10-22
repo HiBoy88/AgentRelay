@@ -17,3 +17,7 @@ Closes #
 
 - Agent/设备：
 - 分支：
+
+## AgentRelay Reviewer
+
+Reviewer 结果必须包含当前 PR HEAD SHA 的 `agentrelay_review` YAML 字段。新提交后必须重新触发 Reviewer。
